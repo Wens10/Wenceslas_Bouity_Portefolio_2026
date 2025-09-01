@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS SIO</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/style_veille.css">
+    <script src="/JS/stars.js" defer></script>
+    <style>
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background-color: #333;
+                padding: 10px;
+                width: 200px;
+                border-radius: 8px;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+            {
+                font-size: 2px;
+            }
+
+
+            .navbar.visible {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+
+            .hamburger {
+                display: block;
+                font-size: 28px;
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                position: absolute;
+                top: 40px;
+                right: 20px;
+                z-index: 1001;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+
+            .navbar {
+                display: flex !important;
+                position: static;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="stars-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></canvas>
+
+    <header class="header">
+        <div style="position: absolute; display: flex; align-items: center; justify-content: space-between;">
+            <a href="/Pages/index.html"><img src="/img/select-many (1).png" alt="Logo de mon site"
+                style="width: 50px; height: 50px; margin-right: 10px; padding: 0; margin-top: 30px; margin-left: 20px;"></a>
+            <button class="hamburger" id="hamburger-btn">&#9776;</button>
+        </div>
+        <div>
+            <h1 class="header-title">WENCESLAS &nbsp; BOUITY</h1>
+        </div>
+        <nav class="navbar" id="navbar">
+            <a href="/Pages/index.html">ACCEUIL</a>
+            <a href="/Pages/bts_sio.html">BTS SIO</a>
+            <a href="#">EPREUVE E5</a>
+            <a href="#">EPREUVE E6</a>
+            <a href="#" id="active">VEILLE TECHNOLOGIQUE</a>
+            <a href="#">PROJETS</a>
+            <a href="/Pages/contact.html">CONTACT</a>
+        </nav>
+    </header>
+    <div class="hero">
+        <main>
+            <h1 class="veille-title">Veilles Technologiques</h1>
+            <style>
+                .veille-title {
+                    text-align: center;
+                    font-size: 3rem;
+                    margin-bottom: 40px;
+                    color: rgb(85, 85, 85);
+                    letter-spacing: 2px;
+                    opacity: 0;
+                    transform: translateY(-40px) scale(0.95);
+                    animation: veilleFadeIn 1.2s cubic-bezier(.68, -0.55, .27, 1.55) forwards;
+                    text-shadow: #4a1e07 0px 0px 10px, #3d1403 0px 0px 20px, #171615 0px 0px 30px;
+                }
+                @media (max-width: 768px) {
+                    .veille-title {
+                        font-size: 2rem;
+                    }
+                }
+
+                @keyframes veilleFadeIn {
+                    to {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                }
+            </style>
+            <style>
+                /* Section IA - Thème orange et noir */
+                .ia-section {
+                    background: transparent;
+                    color: #fff;
+                    border: 1px solid #d04f0a;
+                    border-radius: 16px;
+                    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+                    padding: 32px 24px;
+                    margin-bottom: 40px;
+                    border-left: 8px solid #d04f0a;
+                }
+
+                .ia-section h2 {
+                    color: #d04f0a;
+                    font-size: 2rem;
+                    margin-bottom: 12px;
+                }
+
+                .ia-section h3 {
+                    color: #d04f0a;
+                    margin-top: 24px;
+                    margin-bottom: 8px;
+                    font-size: 1.2rem;
+                }
+
+                .ia-section ul {
+                    margin-left: 24px;
+                    margin-bottom: 12px;
+                }
+
+                .ia-section ul li {
+                    margin-bottom: 6px;
+                    line-height: 1.6;
+                    list-style: disc inside;
+                }
+
+                .ia-section p {
+                    color: #e0e0e0;
+                    margin-bottom: 10px;
+                }
+
+                .ia-section a {
+                    color: #d04f0a;
+                    text-decoration: underline;
+                    transition: color 0.2s;
+                }
+
+                .ia-section a:hover {
+                    color: #fff;
+                    background: #d04f0a;
+                    border-radius: 4px;
+                    padding: 0 4px;
+                }
+
+                .ia-section em {
+                    color: #d04f0a;
+                }
+            </style>
+            <section class="ia-section">
+                <h2>Qu'est ce que la veille technologique ?</h2>
+                <p><strong>Définition :</strong> La veille technologique est un processus de surveillance et d'analyse
+                    des
+                    évolutions technologiques, des innovations et des tendances du marché. Elle permet aux entreprises
+                    de rester informées et compétitives en anticipant les changements et en s'adaptant aux nouvelles
+                    opportunités.</p>
+
+                <h3>Objectifs de la veille technologique</h3>
+                <ul>
+                    <li>Identifier les nouvelles technologies pertinentes pour l'entreprise.</li>
+                    <li>Anticiper les évolutions du marché et des besoins clients.</li>
+                    <li>Repérer les innovations des concurrents et des startups.</li>
+                    <li>Évaluer les risques et opportunités liés aux nouvelles technologies.</li>
+                </ul>
+            </section>
+            </section>
+            <section class="ia-section">
+                <h2>1. Intelligence Artificielle (IA)</h2>
+                <p><strong>Définition :</strong> L'intelligence artificielle (IA) regroupe les technologies capables de
+                    simuler l’intelligence humaine : apprentissage, raisonnement, perception et interaction. On la
+                    retrouve dans les assistants vocaux, les chatbots, les voitures autonomes, ou encore les systèmes de
+                    recommandation.</p>
+
+                <h3>Avantages</h3>
+                <ul>
+                    <li>Amélioration de la productivité (ex. : assistants de codage, automatisation des tâches).</li>
+                    <li>Réduction des coûts pour les entreprises (ex. : Microsoft a économisé 500M$ grâce à Copilot).
+                    </li>
+                    <li>Meilleure personnalisation (ex. : recommandations intelligentes dans les e‑commerces).</li>
+                </ul>
+
+                <h3>Dangers & Limites</h3>
+                <ul>
+                    <li>Remplacement des emplois répétitifs ou à faible valeur ajoutée (ex. : service client, rédaction
+                        standardisée).</li>
+                    <li>Dépendance aux modèles IA, risques d'erreurs ou biais dans les décisions automatisées.</li>
+                    <li>Questions éthiques (vie privée, responsabilité, usage militaire ou politique).</li>
+                </ul>
+
+                <h3>L’IA remplace-t-elle des métiers ?</h3>
+                <ul>
+                    <li>Oui, principalement les tâches automatisables : saisie de données, support client, assistant RH.
+                    </li>
+                    <li>Mais elle crée aussi de nouveaux métiers : ingénieur prompt, superviseur IA, testeur de modèles.
+                    </li>
+                    <li>Les experts estiment que 50 % des emplois « col blanc » débutants pourraient être remplacés à
+                        court terme.</li>
+                </ul>
+
+                <h3>Futur de l’IA</h3>
+                <ul>
+                    <li>Vers des agents IA autonomes dans chaque entreprise.</li>
+                    <li>Développement possible d’une intelligence artificielle générale (AGI) entre 2026 et 2035.</li>
+                    <li>Nécessité de mettre en place des lois, régulations et une gouvernance éthique.</li>
+                </ul>
+
+                <p><em>Sources :</em> <a
+                        href="https://www.theguardian.com/technology/2025/apr/25/microsoft-says-everyone-will-be-a-boss-in-the-future-of-ai-employees"
+                        target="_blank">The Guardian</a>, <a
+                        href="https://nypost.com/2025/05/31/business/ceo-warns-ai-could-wipe-out-1-in-2-white-collar-jobs-in-next-five-years"
+                        target="_blank">NY Post</a></p>
+            </section>
+            </section>
+
+            <style>
+                /* Section Cloud & Dev Web/Mobile - Thème orange et noir */
+                .orange-black-section {
+                    background: transparent;
+                    color: #fff;
+                    border: 1px solid #d04f0a;
+                    border-radius: 16px;
+                    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+                    padding: 32px 24px;
+                    margin-bottom: 40px;
+                    border-left: 8px solid #d04f0a;
+                }
+
+                .orange-black-section h2 {
+                    color: #d04f0a;
+                    font-size: 2rem;
+                    margin-bottom: 12px;
+                }
+
+                .orange-black-section h3 {
+                    color: #d04f0a;
+                    margin-top: 24px;
+                    margin-bottom: 8px;
+                    font-size: 1.2rem;
+                }
+
+                .orange-black-section ul {
+                    margin-left: 24px;
+                    margin-bottom: 12px;
+                }
+
+                .orange-black-section ul li {
+                    margin-bottom: 6px;
+                    line-height: 1.6;
+                    list-style: disc inside;
+                }
+
+                .orange-black-section p {
+                    color: #e0e0e0;
+                    margin-bottom: 10px;
+                }
+
+                .orange-black-section a {
+                    color: #d04f0a;
+                    text-decoration: underline;
+                    transition: color 0.2s;
+                }
+
+                .orange-black-section a:hover {
+                    color: #fff;
+                    background: #d04f0a;
+                    border-radius: 4px;
+                    padding: 0 4px;
+                }
+
+                .orange-black-section em {
+                    color: #d04f0a;
+                }
+            </style>
+
+            <section class="orange-black-section">
+                <h2>2. Cloud Computing</h2>
+                <p><strong>Définition :</strong> Le cloud computing est une technologie qui permet d’accéder à des
+                    ressources informatiques (serveurs, stockage, bases de données, IA…) via Internet, à la demande,
+                    sans avoir à gérer l’infrastructure physique soi-même.</p>
+
+                <h3>Importance dans le développement</h3>
+                <ul>
+                    <li>Permet de développer et déployer des applications plus rapidement et à moindre coût.</li>
+                    <li>Favorise la collaboration des équipes en télétravail grâce à des environnements partagés.</li>
+                    <li>Offre scalabilité, sécurité, automatisation, sauvegardes intégrées.</li>
+                </ul>
+
+                <h3>Tendances actuelles</h3>
+                <ul>
+                    <li>Adoption du serverless computing (pas besoin de gérer les serveurs).</li>
+                    <li>Utilisation massive de Kubernetes et des containers pour les microservices.</li>
+                    <li>Infrastructure as Code (Terraform, AWS CloudFormation) pour déployer automatiquement des
+                        environnements.</li>
+                </ul>
+
+                <h3>Intégration avec le DevOps</h3>
+                <ul>
+                    <li>Automatisation des pipelines CI/CD via le cloud (GitHub Actions, GitLab CI, etc.).</li>
+                    <li>Monitoring et sécurité en temps réel.</li>
+                    <li>Amélioration continue possible grâce à l’analyse des logs, des performances et du feedback
+                        utilisateur.</li>
+                </ul>
+
+                <p><em>Sources :</em> <a href="https://www.iotforall.com/cloud-computing-2025" target="_blank">IoT for
+                        All</a>, <a href="https://www.tierpoint.com/blog/cloud-computing-innovation"
+                        target="_blank">TierPoint</a></p>
+            </section>
+
+            <section class="orange-black-section" id="devwebmobile">
+                <h2>3. Développement Web & Mobile</h2>
+                <p><strong>Définition :</strong> Le développement web concerne la création de sites ou d’applications
+                    accessibles via navigateur (HTML/CSS/JS). Le développement mobile vise les applications natives ou
+                    hybrides pour smartphones (Android/iOS).</p>
+
+                <h3>Tendances du Web</h3>
+                <ul>
+                    <li><strong>PWA (Progressive Web Apps)</strong> : applications web installables, rapides, offline.
+                    </li>
+                    <li><strong>Frameworks modernes</strong> : React, Next.js, Astro, etc. pour plus de performances.
+                    </li>
+                    <li><strong>WebAssembly</strong> : exécuter du code natif (C/C++) dans le navigateur.</li>
+                    <li><strong>Accessibilité et SEO</strong> : design inclusif + performance = meilleure visibilité.
+                    </li>
+                </ul>
+
+                <h3>Tendances Mobile</h3>
+                <ul>
+                    <li><strong>Développement cross-platform</strong> : Flutter, React Native pour un seul code
+                        Android/iOS.</li>
+                    <li><strong>UX mobile</strong> : interfaces minimalistes, dark mode, gestuelles naturelles.</li>
+                    <li><strong>5G + IoT</strong> : apps plus connectées, en temps réel (santé, domotique…).</li>
+                    <li><strong>No-code/Low-code</strong> : apps rapides via Glide, Bubble, etc.</li>
+                </ul>
+
+                <p><em>Sources :</em> <a href="https://buildfire.com/mobile-app-development-trends/"
+                        target="_blank">BuildFire</a>, <a
+                        href="https://trangotech.com/blog/web-application-development-trends/"
+                        target="_blank">TrangoTech</a></p>
+            </section>
+        </main>
+        <script>
+            const btn = document.getElementById('hamburger-btn');
+            const nav = document.getElementById('navbar');
+            let isOpen = false;
+
+            btn.addEventListener('click', () => {
+                if (isOpen) {
+                    nav.classList.remove('visible');
+                    setTimeout(() => {
+                        nav.style.display = 'none';
+                    }, 300);
+                    btn.innerHTML = '&#9776;'; // ☰
+                } else {
+                    nav.style.display = 'flex';
+                    setTimeout(() => {
+                        nav.classList.add('visible');
+                    }, 10); // laisser le temps au DOM de réafficher
+                    btn.innerHTML = '&times;'; // ✖
+                }
+                isOpen = !isOpen;
+            });
+
+            document.querySelectorAll('.navbar a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isOpen) {
+                        nav.classList.remove('visible');
+                        setTimeout(() => {
+                            nav.style.display = 'none';
+                        }, 300);
+                        btn.innerHTML = '&#9776;';
+                        isOpen = false;
+                    }
+                });
+            });
+        </script>
+        <footer class="footer">
+            <p>&copy; 2026 Wenceslas Bouity</p>
+        </footer>
+    </div>
+</body>
+
+</html>

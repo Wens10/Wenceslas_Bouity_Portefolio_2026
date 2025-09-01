@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS SIO</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <script src="/JS/stars.js" defer></script>
+    <style>
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background-color: #333;
+                padding: 10px;
+                width: 200px;
+                border-radius: 8px;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+
+            .navbar.visible {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+
+            .hamburger {
+                display: block;
+                font-size: 28px;
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                position: absolute;
+                top: 40px;
+                right: 20px;
+                z-index: 1001;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+
+            .navbar {
+                display: flex !important;
+                position: static;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="stars-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></canvas>
+
+    <header class="header">
+        <div style="position:absolute; display: flex; align-items: center;">
+            <a href="/Pages/index.html"><img src="/img/select-many (1).png" alt="Logo de mon site"
+                style="width: 50px; height: 50px; margin-right: 10px; padding: 0; margin-top: 30px; margin-left: 20px;"></a>
+            <button class="hamburger" id="hamburger-btn">&#9776;</button>
+        </div>
+        <div>
+            <h1 class="header-title">WENCESLAS &nbsp; BOUITY</h1>
+        </div>
+        <nav class="navbar" id="navbar">
+            <a href="/Pages/index.html">ACCEUIL</a>
+            <a href="/Pages/bts_sio.html">BTS SIO</a>
+            <a href="#">EPREUVE E5</a>
+            <a href="#">EPREUVE E6</a>
+            <a href="/Pages/veille_technologique.html">VEILLE TECHNOLOGIQUE</a>
+            <a href="#">PROJETS</a>
+            <a href="/Pages/contact.html" id="active">CONTACT</a>
+        </nav>
+    </header>
+    <div class="hero">
+        <main>
+            <section class="contact-section">
+                <h2>Contactez-moi</h2>
+                <div class="contact-flex">
+                    <form class="contact-form" action="" method="POST"
+                        enctype="text/plain">
+                        <label for="name">Nom :</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="surname">Prénom :</label>
+                        <input type="text" id="surname" name="surname" required>
+
+                        <label for="email">Votre Email :</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Message :</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button type="submit">Envoyer</button>
+                    </form>
+                    <div class="contact-info-map">
+                        <div class="contact-info">
+                            <h3>Mes coordonnées</h3>
+                            <p><strong>Email :</strong> <a
+                                    href="mailto:judebouity19@gmail.com">judebouity19@gmail.com</a></p>
+                            <p><strong>Téléphone :</strong> <a href="tel:+33601462715">+33 6 01 46 27 15</a></p>
+                            <h3>Localisation</h3>
+                            <p>Nemours, France</p>
+                        </div>
+                        <div class="map-container">
+                            <iframe
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=2.679%2C48.257%2C2.717%2C48.285&amp;layer=mapnik&amp;marker=48.275%2C2.698"
+                                style="border:1px solid #222; width:100%; height:250px;" allowfullscreen=""
+                                loading="lazy"></iframe>
+                            <small><a
+                                    href="https://www.openstreetmap.org/?mlat=48.275&amp;mlon=2.698#map=14/48.2750/2.6980"
+                                    target="_blank" rel="noopener">Voir sur OpenStreetMap</a></small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <style>
+                .contact-section {
+                    background: rgba(37, 13, 8, 0.45);
+                    backdrop-filter: blur(3px);
+                    -webkit-backdrop-filter: blur(3px);
+                    color: #d04f0a;
+                    padding: 2rem;
+                    border: 1px solid #d04f0a;
+                    border-radius: 12px;
+                    max-width: 900px;
+                    margin: 2rem auto;
+
+                }
+
+                .contact-section h2,
+                .contact-section h3 {
+                    color: #d04f0a;
+                    margin-bottom: 1rem;
+                }
+
+                .contact-flex {
+                    display: flex;
+                    gap: 2rem;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+                }
+
+                .contact-form {
+                    flex: 1 1 300px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    margin-bottom: 0;
+                    min-width: 250px;
+                    max-width: 350px;
+                }
+
+                .contact-form label {
+                    font-weight: bold;
+                }
+
+                .contact-form input,
+                .contact-form textarea {
+                    padding: 0.5rem;
+                    border: 1px solid #d04f0a;
+                    border-radius: 6px;
+                    background: #222;
+                    color: #fff;
+                }
+
+                .contact-form button {
+                    background: #d04f0a;
+                    color: #181818;
+                    border: none;
+                    padding: 0.7rem 1.5rem;
+                    border-radius: 6px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                }
+
+                .contact-form button:hover {
+                    background: #f06921;
+                }
+
+                .contact-info-map {
+                    flex: 1 1 300px;
+                    min-width: 250px;
+                    max-width: 350px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+
+                .contact-info {
+                    margin-bottom: 0.5rem;
+                }
+
+                .contact-info a {
+                    color: #d04f0a;
+                    text-decoration: underline;
+                }
+
+                .map-container {
+                    border-radius: 8px;
+                    overflow: hidden;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                }
+
+                @media (max-width: 900px) {
+                    .contact-flex {
+                        flex-direction: column;
+                        gap: 1.5rem;
+                    }
+
+                    .contact-form,
+                    .contact-info-map {
+                        max-width: 100%;
+                    }
+
+                    .map-container iframe {
+                        height: 180px;
+                    }
+                }
+            </style>
+        </main>
+        <script>
+            const btn = document.getElementById('hamburger-btn');
+            const nav = document.getElementById('navbar');
+            let isOpen = false;
+
+            btn.addEventListener('click', () => {
+                if (isOpen) {
+                    nav.classList.remove('visible');
+                    setTimeout(() => {
+                        nav.style.display = 'none';
+                    }, 300);
+                    btn.innerHTML = '&#9776;'; // ☰
+                } else {
+                    nav.style.display = 'flex';
+                    setTimeout(() => {
+                        nav.classList.add('visible');
+                    }, 10); // laisser le temps au DOM de réafficher
+                    btn.innerHTML = '&times;'; // ✖
+                }
+                isOpen = !isOpen;
+            });
+
+            document.querySelectorAll('.navbar a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isOpen) {
+                        nav.classList.remove('visible');
+                        setTimeout(() => {
+                            nav.style.display = 'none';
+                        }, 300);
+                        btn.innerHTML = '&#9776;';
+                        isOpen = false;
+                    }
+                });
+            });
+        </script>
+        <footer class="footer">
+            <p>&copy; 2026 Wenceslas Bouity</p>
+        </footer>
+    </div>
+</body>
+
+</html>

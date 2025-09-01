@@ -1,0 +1,29 @@
+about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about-span {
+    font-weight: 700;
+    color: #d04f0a;
+}
+
+.option {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 70px;
+}
+
+.para_1 {
+    flex: 1 1 270px;
+    min-width: 220px;
+    background: transparent;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px #ff480044;
+    padding: 24px;
+    border: 1px solid #954c1b;
+    position: relative;
+    overflow: hidden;
+}

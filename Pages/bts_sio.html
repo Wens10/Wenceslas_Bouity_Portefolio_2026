@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS SIO</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/style_bts.css">
+    <script src="/JS/stars.js" defer></script>
+    <style>
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background-color: #333;
+                padding: 10px;
+                width: 200px;
+                border-radius: 8px;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+
+            .navbar.visible {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 28px;
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                position: absolute;
+                top: 40px;
+                right: 20px;
+                z-index: 1001;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+
+            .navbar {
+                display: flex !important;
+                position: static;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="stars-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></canvas>
+
+    <header class="header">
+        <div style="position:absolute; display: flex; align-items: center; justify-content: space-between;">
+            <a href="/Pages/index.html"><img src="/img/select-many (1).png" alt="Logo de mon site"
+                style="width: 50px; height: 50px; margin-right: 10px; padding: 0; margin-top: 30px; margin-left: 20px;"></a>
+            <button class="hamburger" id="hamburger-btn">&#9776;</button>
+        </div>
+        <div>
+            <h1 class="header-title">WENCESLAS &nbsp; BOUITY</h1>
+        </div>
+        <nav class="navbar" id="navbar">
+            <a href="/Pages/index.html">ACCEUIL</a>
+            <a href="#" id="active">BTS SIO</a>
+            <a href="#">EPREUVE E5</a>
+            <a href="#">EPREUVE E6</a>
+            <a href="/Pages/veille_technologique.html">VEILLE TECHNOLOGIQUE</a>
+            <a href="#">PROJETS</a>
+            <a href="/Pages/contact.html">CONTACT</a>
+        </nav>
+    </header>
+    <div class="hero">
+        <main>
+            <div>
+                <h2>Qu'est ce que le BTS SIO ?</h2>
+            </div>
+            <div class="about-content">
+                <p>
+                    Le BTS SIO (Services Informatiques aux Organisations) est un diplôme français de niveau Bac
+                    +2
+                    qui forme des professionnels capables de concevoir, développer et maintenir des solutions
+                    informatiques adaptées aux besoins des entreprises. Il se décline en deux options :
+                    <br>
+                    <span class="about-span">SLAM</span> (Solutions Logicielles et Applications Métiers) et
+                    <span class="about-span">SISR</span> (Solutions d'Infrastructure, Systèmes et Réseaux).
+                    <br><br>
+                </p>
+                <p>
+                    La formation couvre divers domaines tels que la programmation, la gestion de bases de
+                    données,
+                    l'administration des systèmes et réseaux, ainsi que la gestion de projets informatiques.
+                    Les étudiants acquièrent des compétences techniques solides et sont préparés à
+                    travailler dans des environnements variés, allant des petites entreprises aux grandes
+                    organisations.
+                </p>
+                <div class="option">
+                    <div class="para_1">
+                        <h2>SLAM</h2>
+                        <p>
+                            L'option SLAM se concentre sur le développement d'applications, la gestion de bases
+                            de
+                            données et
+                            la création de sites web. Les étudiants apprennent à utiliser divers langages de
+                            programmation, tels
+                            que Java, JavaScript, PHP et Python, ainsi que des frameworks et des outils de
+                            développement
+                            modernes.
+                        </p>
+                    </div>
+                    <div class="para_1">
+                        <h2>SISR</h2>
+                        <p>
+                            L'option SISR se concentre sur l'administration des systèmes et des réseaux, ainsi
+                            que
+                            sur
+                            la
+                            sécurité informatique. Les étudiants apprennent à gérer des infrastructures
+                            informatiques,
+                            à configurer des serveurs et à assurer la sécurité des données.
+                        </p>
+                    </div>
+                </div>
+                <br><br><br>
+                <div class="para_1">
+                    <h2>Débouchés professionnels</h2>
+                    <p>
+                        Les diplômés du BTS SIO peuvent prétendre à divers postes dans le secteur informatique, tels que
+                        :
+                    </p>
+                    <ul>
+                        <li>Développeur d'applications</li>
+                        <li>Administrateur systèmes et réseaux</li>
+                        <li>Chef de projet informatique</li>
+                        <li>Consultant en technologies de l'information</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <script>
+            const btn = document.getElementById('hamburger-btn');
+            const nav = document.getElementById('navbar');
+            let isOpen = false;
+
+            btn.addEventListener('click', () => {
+                if (isOpen) {
+                    nav.classList.remove('visible');
+                    setTimeout(() => {
+                        nav.style.display = 'none';
+                    }, 300);
+                    btn.innerHTML = '&#9776;'; // ☰
+                } else {
+                    nav.style.display = 'flex';
+                    setTimeout(() => {
+                        nav.classList.add('visible');
+                    }, 10); // laisser le temps au DOM de réafficher
+                    btn.innerHTML = '&times;'; // ✖
+                }
+                isOpen = !isOpen;
+            });
+
+            document.querySelectorAll('.navbar a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isOpen) {
+                        nav.classList.remove('visible');
+                        setTimeout(() => {
+                            nav.style.display = 'none';
+                        }, 300);
+                        btn.innerHTML = '&#9776;';
+                        isOpen = false;
+                    }
+                });
+            });
+        </script>
+        <footer class="footer">
+            <p>&copy; 2026 Wenceslas Bouity</p>
+        </footer>
+    </div>
+</body>
+
+</html>
