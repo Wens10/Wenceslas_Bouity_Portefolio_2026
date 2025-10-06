@@ -205,14 +205,28 @@ main h2 {
 .links_social_media_icons a img {
     width: 38px;
     height: 38px;
+    z-index: 0;
 
 }
 .links_social_media_icons a {
    position: relative;
-   z-index: 20;
+   display: inline-flex;
+   z-index: 10;
+
+}
+.links_social_media {
+    position: relative;
+    z-index: 0;
 }
 
-
+.A_propos_de_moi a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.A_propos_de_moi a:hover {
+    color: green;
+}
 
 
 
